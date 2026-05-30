@@ -1,5 +1,9 @@
 package com.homework.module2.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.AssertTrue;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,8 +18,15 @@ import java.time.LocalDateTime;
 public class DepartmentDTO {
 
     private int deptId;
+
+    @NotBlank(message = "Title  of the Department cannot be blank")
+    @Size(min = 3, max = 10, message = "Number of characters in title should be in the range: [3, 10]")
     private String title;
+
+    @AssertTrue(message = "Department should be active")
+    @JsonProperty("isActive")
     private boolean isActive;
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }
