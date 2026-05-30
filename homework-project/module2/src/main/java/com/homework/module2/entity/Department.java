@@ -26,7 +26,7 @@ public class Department {
     private Long deptId;
     private String title;
     @JsonProperty("isActive")
-    private boolean isActive;
+    private Boolean isActive;
 
     @CreationTimestamp
     @Column(updatable = false)
