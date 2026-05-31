@@ -1,6 +1,8 @@
 package com.homework.module2.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.homework.module2.annotations.PasswordValidation;
+import com.homework.module2.annotations.PrimeNumberValidation;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -26,6 +28,13 @@ public class DepartmentDTO {
     @NotNull(message = "Active status is required")
     @JsonProperty("isActive")
     private Boolean isActive;
+
+    @PrimeNumberValidation
+    @NotNull(message = "Write a number")
+    private Integer primeNumber;
+
+    @PasswordValidation
+    private String password;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

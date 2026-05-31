@@ -27,6 +27,9 @@ public class Department {
     private String title;
     @JsonProperty("isActive")
     private Boolean isActive;
+    private Integer primeNumber;
+    private String password;
+
 
     @CreationTimestamp
     @Column(updatable = false)
