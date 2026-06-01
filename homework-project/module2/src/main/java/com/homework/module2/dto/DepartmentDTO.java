@@ -22,7 +22,7 @@ public class DepartmentDTO {
     private Long deptId;
 
     @NotBlank(message = "Title  of the Department cannot be blank")
-    @Size(min = 3, max = 15, message = "Number of characters in title should be in the range: [3, 10]")
+    @Size(min = 3, max = 15, message = "Number of characters in title should be in the range: [3, 15]")
     private String title;
 
     @NotNull(message = "Active status is required")
