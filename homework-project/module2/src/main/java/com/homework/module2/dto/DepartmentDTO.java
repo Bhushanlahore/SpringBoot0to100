@@ -30,7 +30,7 @@ public class DepartmentDTO {
     private Boolean isActive;
 
     @PrimeNumberValidation
-    @NotNull(message = "Write a number")
+    @NotNull(message = "Number can not be null")
     private Integer primeNumber;
 
     @PasswordValidation
