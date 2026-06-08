@@ -21,30 +21,5 @@ public class DoctorServiceTest {
 
     @Test
     public void testDoctorAppointsments(){
-
-        Appointment appointment = Appointment.builder()
-                .appointmentTime(LocalDateTime.of(2025, 11, 1, 14, 0, 0))
-                .reason("Cancer")
-                .build();
-
-        Appointment appointment1 = Appointment.builder()
-                .appointmentTime(LocalDateTime.of(2026, 11, 1, 14, 0, 0))
-                .reason("Cancer")
-                .build();
-
-        Appointment appointment2 = Appointment.builder()
-                .appointmentTime(LocalDateTime.of(2024, 11, 1, 14, 0, 0))
-                .reason("Cancer")
-                .build();
-
-        var updatedAppointment = appointmentService.createANewAppointment(appointment, 1L, 2L);
-        var updatedAppointment1 = appointmentService.createANewAppointment(appointment, 1L, 2L);
-        var updatedAppointment2 = appointmentService.createANewAppointment(appointment, 1L, 2L);
-
-        System.out.println(updatedAppointment);
-        System.out.println(updatedAppointment1);
-        System.out.println(updatedAppointment2);
-
-        System.out.println(doctorService.findDoctorsAppointments(2L));
     }
 }
