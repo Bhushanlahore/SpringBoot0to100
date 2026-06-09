@@ -21,7 +21,11 @@ public class InsuranceService {
 
         patient.setInsurance(insurance); // dirty patient
 
+<<<<<<< HEAD
         insurance.setPatient(patient); //optional,
+=======
+       // insurance.setPatient(patient); //optional,
+>>>>>>> 2fa575809d30327c02b0754d4c6f77919be29c2b
         return insurance;
     }
 

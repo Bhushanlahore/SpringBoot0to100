@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @ToString
-public class Appointment {
+public class  Appointment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
