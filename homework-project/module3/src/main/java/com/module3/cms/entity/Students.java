@@ -19,6 +19,11 @@ public class Students {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String email;
+    private String address;
+    private String phone;
+    private String gender;
+
     @CreationTimestamp
     private LocalDateTime createdAt;
 
