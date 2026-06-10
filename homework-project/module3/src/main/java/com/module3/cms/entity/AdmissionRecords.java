@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+
 
 import java.time.LocalDateTime;
 
@@ -18,10 +18,10 @@ public class AdmissionRecords {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer fees;
+    private LocalDateTime addmisonDate;
+
     @CreationTimestamp
     private LocalDateTime createdAt;
-
-
 
     @OneToOne
     @JoinColumn(name = "student_id")
