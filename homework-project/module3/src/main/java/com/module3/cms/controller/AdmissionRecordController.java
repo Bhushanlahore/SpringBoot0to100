@@ -6,10 +6,7 @@ import com.module3.cms.service.AdmissionRecordService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/admisson")
@@ -22,6 +19,11 @@ public class AdmissionRecordController {
     public ResponseEntity<AdmissionResponseDTO> createAdmisson(@RequestBody AdmissionRequestDTO dto){
         AdmissionResponseDTO admission = admissionService.createAdmission(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(admission);
+    }
 
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Boolean> createAdmisson(@PathVariable Long id){
+        boolean result = admissionService.deleteAddmission(id);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 }

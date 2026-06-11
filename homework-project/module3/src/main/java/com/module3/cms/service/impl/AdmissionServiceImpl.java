@@ -4,6 +4,7 @@ import com.module3.cms.dto.AdmissionRequestDTO;
 import com.module3.cms.dto.AdmissionResponseDTO;
 import com.module3.cms.entity.AdmissionRecords;
 import com.module3.cms.entity.Students;
+import com.module3.cms.exception.RecordNotFoundException;
 import com.module3.cms.exception.StudentNotFoundException;
 import com.module3.cms.repository.AdmissionRecordsRepository;
 import com.module3.cms.repository.StudentsRepository;
@@ -38,25 +39,32 @@ public class AdmissionServiceImpl implements AdmissionRecordService {
 
        AdmissionRecords save = admissioRepository.save(records);
 
-//       AdmissionRecords admissionRecords = mapper.map(dto, AdmissionRecords.class);
-//       admissionRecords.setStudents(students);
-//
- //        AdmissionRecords save = admissioRepository.save(admissionRecords);
-//        System.out.println("Addmission Records: "+admissionRecords);
-//
        AdmissionResponseDTO newAdmissionResponseDTO = mapper.map(save, AdmissionResponseDTO.class);
        newAdmissionResponseDTO.setStudentId(students.getId());
         System.out.println("newAdmissionResponseDTO "+ newAdmissionResponseDTO);
        return newAdmissionResponseDTO;
     }
 
-    @Override
-    public AdmissionResponseDTO updateAddmisson(Long id, AdmissionRequestDTO dto) {
-        return null;
-    }
 
     @Override
-    public void deleteAddmission(Long id) {
+    @Transactional
+    public boolean deleteAddmission(Long id) {
+           AdmissionRecords records = admissioRepository.findById(id).orElseThrow(()-> new RecordNotFoundException("Record not found with Id "+id));
 
+        System.out.println("Step 2");
+
+        admissioRepository.delete(records);
+
+        System.out.println("Step 3");
+
+        admissioRepository.flush();
+
+        System.out.println("Step 4");
+
+
+        System.out.println(
+                "Exists After Delete = "
+                        + admissioRepository.existsById(id));
+           return true;
     }
 }

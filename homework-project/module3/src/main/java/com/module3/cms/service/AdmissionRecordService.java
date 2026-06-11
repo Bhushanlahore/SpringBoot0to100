@@ -7,7 +7,5 @@ public interface AdmissionRecordService {
 
     public AdmissionResponseDTO createAdmission(AdmissionRequestDTO dto);
 
-    public AdmissionResponseDTO updateAddmisson(Long id, AdmissionRequestDTO dto);
-
-    public void deleteAddmission(Long id);
+    public boolean deleteAddmission(Long id);
 }
