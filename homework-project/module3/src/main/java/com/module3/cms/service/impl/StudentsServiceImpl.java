@@ -3,6 +3,7 @@ package com.module3.cms.service.impl;
 import com.module3.cms.dto.StudentRequestDTO;
 import com.module3.cms.dto.StudentsResponseDTO;
 import com.module3.cms.entity.Students;
+import com.module3.cms.exception.RecordNotFoundException;
 import com.module3.cms.exception.StudentNotFoundException;
 import com.module3.cms.repository.StudentsRepository;
 import com.module3.cms.service.StudentsService;
@@ -45,5 +46,14 @@ public class StudentsServiceImpl implements StudentsService {
     @Override
     public StudentsResponseDTO assignSubjects(Long studentId, Long courseId) {
         return null;
+    }
+
+    @Override
+    public boolean deleteStudent(Long id) {
+
+        Students students = studentsRepository.findById(id).orElseThrow(() -> new RecordNotFoundException("Resource not found"));
+        studentsRepository.delete(students);
+        return true;
+
     }
 }

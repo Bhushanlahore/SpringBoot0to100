@@ -26,4 +26,10 @@ public class StudentsController {
         StudentsResponseDTO student = studentsService.updateStudentDetails(id,dto);
         return ResponseEntity.status(HttpStatus.OK).body(student);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Boolean> updateStudent(@PathVariable Long id){
+        boolean student = studentsService.deleteStudent(id);
+        return ResponseEntity.status(HttpStatus.OK).body(student);
+    }
 }

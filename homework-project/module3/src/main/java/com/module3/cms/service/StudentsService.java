@@ -12,4 +12,6 @@ public interface StudentsService {
     StudentsResponseDTO assignProfeeser(Long studentId, Long ProfessorId);
 
     StudentsResponseDTO assignSubjects(Long studentId, Long courseId);
+
+    boolean deleteStudent(Long id);
 }

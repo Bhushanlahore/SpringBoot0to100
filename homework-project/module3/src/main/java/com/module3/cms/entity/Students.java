@@ -40,7 +40,9 @@ public class Students {
     private List<Subjects> subjects = new ArrayList<>();
 
 
-    @OneToOne(mappedBy = "students")
+    @OneToOne(mappedBy = "students",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
     private AdmissionRecords admissionRecords;  //inverse side
 
 }
