@@ -42,23 +42,23 @@ public class AuthController {
                                                   HttpServletResponse response) {
         LoginResponseDto loginResponseDto = authService.login(loginDto);
 
-//        Cookie cookie = new Cookie("refreshToken", loginResponseDto.getRefreshToken());
-//        cookie.setHttpOnly(true);
-//        cookie.setSecure("production".equals(deployEnv));
-//        response.addCookie(cookie);
+        Cookie cookie = new Cookie("refreshToken", loginResponseDto.getRefreshToken());
+        cookie.setHttpOnly(true);
+      //  cookie.setSecure("production".equals(deployEnv));
+        response.addCookie(cookie);
 
         return ResponseEntity.ok(loginResponseDto);
     }
 
-//    @PostMapping("/refresh")
-//    public ResponseEntity<LoginResponseDto> refresh(HttpServletRequest request) {
-//        String refreshToken = Arrays.stream(request.getCookies()).
-//                filter(cookie -> "refreshToken".equals(cookie.getName()))
-//                .findFirst()
-//                .map(Cookie::getValue)
-//                .orElseThrow(() -> new AuthenticationServiceException("Refresh token not found inside the Cookies"));
-//        LoginResponseDto loginResponseDto = authService.refreshToken(refreshToken);
-//
-//        return ResponseEntity.ok(loginResponseDto);
-//    }
+    @PostMapping("/refresh")
+    public ResponseEntity<LoginResponseDto> refresh(HttpServletRequest request) {
+        String refreshToken = Arrays.stream(request.getCookies()).
+                filter(cookie -> "refreshToken".equals(cookie.getName()))
+                .findFirst()
+                .map(Cookie::getValue)
+                .orElseThrow(() -> new AuthenticationServiceException("Refresh token not found inside the Cookies"));
+        LoginResponseDto loginResponseDto = authService.refreshToken(refreshToken);
+
+        return ResponseEntity.ok(loginResponseDto);
+    }
 }
