@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service @RequiredArgsConstructor
-public class PostServiceImpl implements PostService{
+public class  PostServiceImpl implements PostService{
 
     private final PostRepository postRepository;
     private final ModelMapper modelMapper;

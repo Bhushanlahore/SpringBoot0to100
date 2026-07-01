@@ -26,21 +26,19 @@ public class WebSecurityConfig {
     private final JwtAuthFilter jwtAuthFilter;
     private final OAuth2SuccessHandler oAuth2SuccessHandler;
 
-//    private static final String[] publicRoutes = {
-//            "/error", "/auth/**", "/home.html"
-//    };
+    private static final String[] publicRoutes = {
+            "/error", "/auth/**", "/home.html"
+    };
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeHttpRequests(auth -> auth
 
-                        .requestMatchers("/posts", "/error", "/auth/**", "/home.html", "/", "/login").permitAll()
-                        //.requestMatchers("/posts/**").hasAnyRole("ADMIN")
-//                        .requestMatchers(publicRoutes).permitAll()
-//                        .requestMatchers(HttpMethod.GET, "/posts/**").permitAll()
- //                       .requestMatchers(HttpMethod.POST, "/posts/**")
- //                           .hasAnyRole(ADMIN.name(), CREATOR.name())
+                        .requestMatchers(publicRoutes).permitAll()
+                        .requestMatchers(HttpMethod.GET, "/posts/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/posts/**")
+                            .hasAnyRole(ADMIN.name(), CREATOR.name())
                         .anyRequest().authenticated())
                 .csrf(csrfConfig -> csrfConfig.disable())
                 .sessionManagement(sessionConfig -> sessionConfig
